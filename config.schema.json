@@ -5,13 +5,59 @@
   "schema": {
     "type": "object",
     "properties": {
-      "name": {"title": "Name", "type": "string", "required": true, "default": "Ecobee Comfort Control"},
-      "refreshToken": {"title": "Ecobee Refresh Token", "type": "string", "required": true},
-      "thermostatSerialNumbers": {"title": "Thermostat Serial Numbers", "description": "Optional comma-separated serial numbers; blank discovers all authorized thermostats.", "type": "string"},
-      "holdPolicy": {"title": "Comfort Setting Hold Behavior", "type": "string", "default": "thermostat", "enum": ["thermostat", "nextTransition", "indefinite", "2hour", "4hour"], "enumLabels": ["Use thermostat preference", "Until next schedule transition", "Indefinite", "2 hours", "4 hours"]},
-      "pollingIntervalSeconds": {"title": "Polling Interval (seconds)", "type": "integer", "default": 60, "minimum": 30, "maximum": 3600},
-      "enableResumeScheduleSwitch": {"title": "Enable Resume Schedule Switch", "type": "boolean", "default": true},
-      "discoverCustomComfortSettings": {"title": "Discover Custom Comfort Settings", "type": "boolean", "default": true}
+      "name": {
+        "title": "Name",
+        "type": "string",
+        "required": true,
+        "default": "Ecobee Comfort Control"
+      },
+      "thermostatSerialNumbers": {
+        "title": "Thermostat Serial Numbers",
+        "description": "Optional comma-separated serial numbers; blank discovers all authorized thermostats.",
+        "type": "string"
+      },
+      "holdPolicy": {
+        "title": "Comfort Setting Hold Behavior",
+        "type": "string",
+        "default": "thermostat",
+        "enum": [
+          "thermostat",
+          "nextTransition",
+          "indefinite",
+          "2hour",
+          "4hour"
+        ],
+        "enumLabels": [
+          "Use thermostat preference",
+          "Until next schedule transition",
+          "Indefinite",
+          "2 hours",
+          "4 hours"
+        ]
+      },
+      "pollingIntervalSeconds": {
+        "title": "Polling Interval (seconds)",
+        "type": "integer",
+        "default": 60,
+        "minimum": 30,
+        "maximum": 3600
+      },
+      "enableResumeScheduleSwitch": {
+        "title": "Enable Resume Schedule Switch",
+        "type": "boolean",
+        "default": true
+      },
+      "discoverCustomComfortSettings": {
+        "title": "Discover Custom Comfort Settings",
+        "type": "boolean",
+        "default": true
+      },
+      "applicationKey": {
+        "title": "Ecobee Application Key",
+        "description": "Application key issued by Ecobee for the Residential API. Stored locally; never publish it.",
+        "type": "string",
+        "required": true
+      }
     }
   }
 }
