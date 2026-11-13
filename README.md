@@ -17,7 +17,9 @@ The plugin will not create or edit Ecobee Comfort Settings, schedules, or temper
 
 ## Ecobee authorization limitation
 
-Ecobee's developer portal currently reports that it is not accepting new developer registrations. The existing residential API authorization flow may therefore be unavailable to new users. This is a release blocker until new-installation authorization is validated. Never assume a refresh token can be obtained by every user.
+ The plugin uses Ecobee's documented Residential API PIN Authorization flow with the smartWrite scope. During onboarding, the plugin requests a PIN, the user approves the application in the Ecobee web portal, and the plugin exchanges the authorization code for access and refresh tokens. Tokens are intended to be stored in Homebridge's local storage, not in the main configuration file.
+
+Ecobee currently reports that it is not accepting new developer registrations. This does not mean existing application keys cannot authorize additional users, but it does mean obtaining a new application key may be restricted. The plugin therefore accepts an application key as configuration rather than embedding a shared key in source code. A valid Ecobee application key is required; new-user PIN authorization must be validated before release.
 
 ## Planned configuration
 
@@ -26,7 +28,7 @@ Ecobee's developer portal currently reports that it is not accepting new develop
   "platforms": [{
     "platform": "EcobeeComfort",
     "name": "Ecobee Comfort Control",
-    "refreshToken": "YOUR_ECOBEE_REFRESH_TOKEN",
+    "applicationKey": "YOUR_ECOBEE_APPLICATION_KEY",
     "thermostatSerialNumbers": "",
     "holdPolicy": "thermostat",
     "pollingIntervalSeconds": 60,
